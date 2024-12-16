@@ -10,8 +10,8 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import com.example.act9.ui.navigation.PengelolaHalaman
 import com.example.act9.ui.theme.ACT9Theme
-import com.example.roomlocaldb.ui.navigation.PengelolaHalaman
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

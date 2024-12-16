@@ -35,8 +35,8 @@ import com.example.act9.data.entity.Mahasiswa
 import com.example.act9.ui.customwidget.TopAppBar
 import com.example.act9.ui.viewmodel.DetailMhsViewModel
 import com.example.act9.ui.viewmodel.DetailUiState
+import com.example.act9.ui.viewmodel.PenyediaViewModel
 import com.example.act9.ui.viewmodel.toMahasiswaEntity
-import com.example.roomlocaldb.ui.viewmodel.PenyediaViewModel
 
 
 @Composable

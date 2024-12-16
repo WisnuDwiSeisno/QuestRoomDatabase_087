@@ -30,7 +30,7 @@ import com.example.act9.ui.viewmodel.FormErrorState
 import com.example.act9.ui.viewmodel.MahasiswaEvent
 import com.example.act9.ui.viewmodel.MahasiswaViewModel
 import com.example.act9.ui.viewmodel.MhsUIState
-import com.example.roomlocaldb.ui.viewmodel.PenyediaViewModel
+import com.example.act9.ui.viewmodel.PenyediaViewModel
 import kotlinx.coroutines.launch
 
 @Composable
