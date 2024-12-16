@@ -6,12 +6,12 @@ import androidx.compose.runtime.setValue
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.act9.data.entity.Mahasiswa
 import com.example.act9.repository.RepositoryMhs
 import com.example.act9.ui.navigation.DestinasiUpdate
 import kotlinx.coroutines.flow.filterNotNull
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.launch
-
 
 class UpdateMhsViewModel(
     savedStateHandle: SavedStateHandle,
@@ -30,5 +30,11 @@ class UpdateMhsViewModel(
                 .first()
                 .toUIStateMhs()
         }
+    }
+
+    fun updateState(mahasiswaEvent: MahasiswaEvent) {
+        updateUIState = updateUIState.copy(
+            mahasiswaEvent = mahasiswaEvent,
+        )
     }
 }
