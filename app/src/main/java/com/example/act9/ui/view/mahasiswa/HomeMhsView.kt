@@ -1,5 +1,4 @@
 package com.example.act9.ui.view.mahasiswa
-
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -34,19 +33,18 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.act9.data.entity.Mahasiswa
 import com.example.act9.ui.customwidget.TopAppBar
+import com.example.act9.ui.viewmodel.HomeMhsViewModel
 import com.example.act9.ui.viewmodel.HomeUiState
-import com.example.act9.ui.viewmodel.MahasiswaViewModel
 import com.example.act9.ui.viewmodel.PenyediaViewModel
 import kotlinx.coroutines.launch
 
 
 @Composable
 fun HomeMhsView(
-    viewModel: MahasiswaViewModel = viewModel(factory = PenyediaViewModel.Factory),
+    viewModel: HomeMhsViewModel = viewModel(factory = PenyediaViewModel.Factory),
     onAddMhs: () -> Unit = { },
     onDetailClick: (String) -> Unit = { },
     modifier: Modifier
@@ -156,7 +154,7 @@ fun ListMahasiswa(
         items(
             items = listMhs,
             itemContent = { mhs ->
-                cardMhs(
+                CardMhs(
                     mhs = mhs,
                     onClick = { onClick(mhs.nim) }
                 )
@@ -167,7 +165,7 @@ fun ListMahasiswa(
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun cardMhs(
+fun CardMhs(
     mhs: Mahasiswa,
     modifier: Modifier = Modifier,
     onClick: () -> Unit = { }

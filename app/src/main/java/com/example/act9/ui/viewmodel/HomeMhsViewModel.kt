@@ -16,8 +16,7 @@ import kotlinx.coroutines.flow.stateIn
 class HomeMhsViewModel(
     private val repositoryMhs: RepositoryMhs
 ) : ViewModel() {
-
-    val homeUIState: StateFlow<HomeUiState> = repositoryMhs.getAllMhs()
+    val homeUiState : StateFlow<HomeUiState> = repositoryMhs.getAllMhs()
         .filterNotNull()
         .map {
             HomeUiState(
@@ -42,13 +41,14 @@ class HomeMhsViewModel(
             scope = viewModelScope,
             started = SharingStarted.WhileSubscribed(5000),
             initialValue = HomeUiState(
-                isLoading = true
+                isLoading = true,
             )
         )
 }
-data class HomeUiState (
+
+data class HomeUiState(
     val listMhs: List<Mahasiswa> = listOf(),
     val isLoading: Boolean = false,
     val isError: Boolean = false,
-    val errorMessage: String = ""
+    val errorMessage: String = " "
 )
