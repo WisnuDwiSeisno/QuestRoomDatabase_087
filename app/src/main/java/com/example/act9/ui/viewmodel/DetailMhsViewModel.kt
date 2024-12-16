@@ -16,16 +16,16 @@ import kotlinx.coroutines.flow.onStart
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
 
-class DetailMhsViewModel (
+class DetailMhsViewModel(
     savedStateHandle: SavedStateHandle,
     private val repositoryMhs: RepositoryMhs,
 ) : ViewModel() {
-    private val _nim : String = checkNotNull(savedStateHandle[DestinasiDetail.NIM])
+    private val _nim: String = checkNotNull(savedStateHandle[DestinasiDetail.NIM])
 
     val detailUiState: StateFlow<DetailUiState> = repositoryMhs.getMhs(_nim)
         .filterNotNull()
         .map {
-            DetailUiState (
+            DetailUiState(
                 detailUiEvent = it.toDetailUiEvent(),
                 isLoading = false,
             )
@@ -50,6 +50,7 @@ class DetailMhsViewModel (
                 isLoading = true,
             ),
         )
+
     fun deleteMhs() {
         detailUiState.value.detailUiEvent.toMahasiswaEntity().let {
             viewModelScope.launch {
@@ -57,4 +58,28 @@ class DetailMhsViewModel (
             }
         }
     }
+}
+
+data class DetailUiState(
+    val detailUiEvent: MahasiswaEvent = MahasiswaEvent(),
+    val isLoading: Boolean = false,
+    val isError: Boolean = false,
+    val errorMessage: String = ""
+) {
+    val isUiEventEmpty: Boolean
+        get() = detailUiEvent == MahasiswaEvent()
+
+    val isUiEventNotEmpty: Boolean
+        get() = detailUiEvent != MahasiswaEvent()
+}
+
+fun Mahasiswa.toDetailUiEvent(): MahasiswaEvent {
+    return MahasiswaEvent(
+        nim = nim,
+        nama = nama,
+        jenisKelamin = jenisKelamin,
+        alamat = alamat,
+        kelas = kelas,
+        angkatan = angkatan
+    )
 }
